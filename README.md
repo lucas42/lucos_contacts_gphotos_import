@@ -11,9 +11,8 @@ A python script to import google photo data to [lucos_contacts](https://github.c
 ## Load Data
 
 * Log into google photos and go to https://photos.google.com/people
-* Scroll to the bottom of the page (as content lazy-loads)
-* In dev inspector, call `document.getElementsByClassName("C3Tghf")[0]`
-* Right click on the result and select `Copy` > `Copy outerHTML`
+* Right click and `View Source`
+* Select All and Copy
 * Paste the contents into a file called `data.html` at the top level of this project's directory structure
 
 ## Running

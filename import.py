@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-import os, json, requests, urllib.parse
+import os, json5, requests, urllib.parse
+from bs4 import BeautifulSoup
 
 CONTACTS_URL = os.environ.get('LUCOS_CONTACTS', "https://contacts.l42.eu/")
 LUCOS_HEADERS={'AUTHORIZATION':"key "+os.environ.get('LUCOS_CONTACTS_API_KEY')}
@@ -27,4 +28,21 @@ def newContact(name):
 
 
 with open('data.html') as fp:
-	print(fp.readlines())
+	doc = BeautifulSoup(fp, "html.parser")
+	for script in doc.find_all("script"):
+		if "AF_initDataCallback(" not in script.get_text():
+			continue
+		raw = script.get_text().replace("AF_initDataCallback(","",1).replace(");","",1)
+		data = json5.loads(raw)
+		if data['key'] != "ds:3":
+			continue
+		for row in data['data'][0][0][0][0]:
+			name = row[1]
+			if not name:
+				continue
+			image = row[2]
+			numericId = row[3]
+			id1 = row[8]
+			id2 = row[11] # All examples I've looked at have the same value for id1 and id2
+			url = f"/_search/c{id1}_{name}"
+			print(name, url)
