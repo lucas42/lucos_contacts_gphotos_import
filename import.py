@@ -30,7 +30,6 @@ with open('data.html') as fp:
 					"person_id": person_id,
 					"cluster_media_key": cluster_media_key,
 					"search_path": search_path,
-					"profile_pic_url": profile_pic_url,
 				},
 				{
 					"type":"name",
