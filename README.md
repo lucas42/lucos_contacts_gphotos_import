@@ -2,6 +2,10 @@
 
 A python script to import google photo data to [lucos_contacts](https://github.com/lucas42/lucos_contacts)
 
+## Requirements
+
+* [pipenv](https://pipenv.pypa.io/en/latest/)
+
 ## Setup
 
 * Run `pipenv install` to install dependencies
