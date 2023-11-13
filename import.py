@@ -14,13 +14,13 @@ with open('data.html') as fp:
 		data = json5.loads(raw)
 		if data['key'] != "ds:3":
 			continue
-		for row in data['data'][0][0][0][0]:
-			name = row[1]
+		for row in data['data'][1][0][1]:
+			name = row[1][5]
 			if not name:
 				continue
-			profile_pic_url = row[2]
-			person_id = row[3]
-			cluster_media_key = row[8] # Same as row[11] from what I can tell
+			profile_pic_url = row[1][0]
+			person_id = row[0][1][1]
+			cluster_media_key = row[0][0]
 			escaped_key = cluster_media_key.replace("_", "~u")
 			search_path = f"/search/_c{escaped_key}_{name}"
 
