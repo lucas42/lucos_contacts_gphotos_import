@@ -12,7 +12,7 @@ with open('data.html') as fp:
 			continue
 		raw = script.get_text().replace("AF_initDataCallback(","",1).replace(");","",1)
 		data = json5.loads(raw)
-		if data['key'] != "ds:4":
+		if data['key'] != "ds:5":
 			continue
 		for row in data['data'][1][0][1]:
 			name = row[1][5]
