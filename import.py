@@ -3,7 +3,10 @@ import os, json5, requests, urllib.parse
 from bs4 import BeautifulSoup
 
 CONTACTS_URL = os.environ.get('LUCOS_CONTACTS', "https://contacts.l42.eu/")
-LUCOS_HEADERS={'AUTHORIZATION':"key "+os.environ.get('LUCOS_CONTACTS_API_KEY')}
+headers={
+	'Authorization':"key "+os.environ.get('LUCOS_CONTACTS_API_KEY'),
+	'User-Agent': "lucos_contacts_gphotos_import",
+}
 
 with open('data.html') as fp:
 	doc = BeautifulSoup(fp, "html.parser")
@@ -36,5 +39,5 @@ with open('data.html') as fp:
 					"name": name,
 				}
 			]};
-			resp = requests.post(CONTACTS_URL+'agents/import', headers=LUCOS_HEADERS, allow_redirects=False, json=data)
+			resp = requests.post(CONTACTS_URL+'agents/import', headers=headers, allow_redirects=False, json=data)
 			resp.raise_for_status()
