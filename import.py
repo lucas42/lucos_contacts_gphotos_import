@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 
 CONTACTS_URL = os.environ.get('LUCOS_CONTACTS', "https://contacts.l42.eu/")
 headers={
-	'Authorization':"key "+os.environ.get('LUCOS_CONTACTS_API_KEY'),
+	'Authorization':"key "+os.environ.get('KEY_LUCOS_CONTACTS'),
 	'User-Agent': "lucos_contacts_gphotos_import",
 }
 
