@@ -39,5 +39,5 @@ with open('data.html') as fp:
 					"name": name,
 				}
 			]};
-			resp = requests.post(CONTACTS_URL+'agents/import', headers=headers, allow_redirects=False, json=data)
+			resp = requests.post(CONTACTS_URL+'people/import', headers=headers, allow_redirects=False, json=data)
 			resp.raise_for_status()
